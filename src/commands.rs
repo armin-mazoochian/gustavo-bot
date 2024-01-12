@@ -54,10 +54,6 @@ pub async fn answer(bot: Bot, msg: Message, cmd: Command) -> ResponseResult<()> 
             GLOBAL_DATA.with(|dict| {
                 *dict.borrow_mut() = GlobalData { racista_ratio: ratio }
             });
-            GLOBAL_DATA.with(|dict| {
-                let ratio = dict.borrow().racista_ratio;
-                println!("Ratio is {ratio}")
-            });
 
             bot.send_message(msg.chat.id, format!("racista ratio set to {ratio}%"))
                 .reply_to_message_id(msg.id).await?
